@@ -1,0 +1,4 @@
+- react-redux react-toolkit
+- MUI - Tailwind
+- Formik - Formik-Yup
+- react-router
