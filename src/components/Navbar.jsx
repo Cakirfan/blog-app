@@ -11,14 +11,18 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import logo from "../Assets/puzzle.jpg";
+import { List, ListItem } from "@mui/material";
+import useAuthCall from "../hooks/useAuthCall";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import avatar from "../Assets/avatar.jpg";
 
-import MyImg from "../Assets/images/myFoto.jpeg"
+function NavBar() {
+  const navigate = useNavigate();
+  const { currentUser, image } = useSelector((state) => state.auth);
+  const { logout } = useAuthCall();
 
-const pages = ["DASHBOARD", "NEW BLOG", "ABOUT"];
-const settings = ["My Blogs", "Profile", "Logout"];
-
-function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -37,28 +41,36 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const handleNavigation = (endpoint) => {
+    navigate(`/${endpoint}`);
+    handleCloseNavMenu();
+    handleCloseUserMenu();
+  };
+  const handleClick = () => {
+    logout();
+    handleCloseUserMenu();
+  };
+
   return (
-    <AppBar position="static">
+    <AppBar
+      position="fixed"
+      sx={{ backgroundColor: "slategray", color: "white", opacity: ".8", paddingY: "10px" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          {/* <Typography
-            variant="h6"
-            noWrap
+          <Box
+            onClick={() => handleNavigation("")}
             component="a"
             href="/"
             sx={{
               mr: 2,
+              borderRadius: "50%",
+              overflow: "hidden",
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
             }}
           >
-            LOGO
-          </Typography> */}
+            <img src={logo} alt="#" width="80px" height="80px" />
+          </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -69,7 +81,7 @@ function ResponsiveAppBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon />
+              <MenuIcon sx={{ color: "black" }} />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -86,52 +98,82 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
+                color: "white",
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem
+                sx={{ color: "black", "&:hover": { backgroundColor: "white" } }}
+                onClick={handleCloseNavMenu}
+              >
+                <Typography textAlign="center">
+                  <Button
+                    onClick={() => handleNavigation("")}
+                    sx={{ color: "black", display: "block" }}
+                  >
+                    Dashboard
+                  </Button>
+                  <Button
+                    onClick={() => handleNavigation("newblog")}
+                    sx={{ color: "black", display: "block" }}
+                  >
+                    New Blog
+                  </Button>
+                  <Button
+                    onClick={() => handleNavigation("about")}
+                    sx={{ color: "black", display: "block" }}
+                  >
+                    About
+                  </Button>
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
+
+          <Box
+            onClick={() => handleNavigation("")}
             component="a"
             href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              flex: 1,
+              borderRadius: "50%",
+              overflow: "hidden",
             }}
-          ></Typography>
+          >
+            <img src={logo} alt="#" width="80px" height="80px" />
+          </Box>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              onClick={() => handleNavigation("")}
+              sx={{ my: 2, ml: 2, color: "black", display: "block" }}
+            >
+              Dashboard
+            </Button>
+            {currentUser && (
+              <>
+                <Button
+                  onClick={() => handleNavigation("newblog")}
+                  sx={{ my: 2, ml: 2, color: "black", display: "block" }}
+                >
+                  New Blog
+                </Button>
+                <Button
+                  onClick={() => handleNavigation("about")}
+                  sx={{ my: 2, ml: 2, color: "black", display: "block" }}
+                >
+                  About
+                </Button>
+              </>
+            )}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Irfan Cakir"
-                  src={MyImg}
-                />
+                <Avatar alt="Remy Sharp" src={currentUser ? image : avatar} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -150,11 +192,70 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <List component="ul" sx={{ margin: 0, padding: 0 }}>
+                {currentUser && (
+                  <>
+                    <ListItem component="li" sx={{ marginBottom: -2 }}>
+                      <Typography
+                        sx={{
+                          p: 1,
+                          borderRadius: "5px",
+                          "&:hover": { backgroundColor: "#fafafa" },
+                        }}
+                        variant="body1"
+                        component="button"
+                        onClick={() => handleNavigation("profile")}
+                      >
+                        Profile
+                      </Typography>
+                    </ListItem>
+                    <ListItem component="li" sx={{ marginBottom: -2 }}>
+                      <Typography
+                        sx={{
+                          p: 1,
+                          borderRadius: "5px",
+                          "&:hover": { backgroundColor: "#fafafa" },
+                        }}
+                        variant="body1"
+                        component="button"
+                        onClick={() => handleNavigation("my-blogs")}
+                      >
+                        My Blogs
+                      </Typography>
+                    </ListItem>
+                  </>
+                )}
+
+                <ListItem component="li" sx={{ marginBottom: 0 }}>
+                  {currentUser ? (
+                    <Typography
+                      sx={{
+                        p: 1,
+                        borderRadius: "5px",
+                        "&:hover": { backgroundColor: "#fafafa" },
+                      }}
+                      variant="body1"
+                      onClick={handleClick}
+                      component="button"
+                    >
+                      Logout
+                    </Typography>
+                  ) : (
+                    <Typography
+                      sx={{
+                        p: 1,
+                        borderRadius: "5px",
+                        "&:hover": { backgroundColor: "#fafafa" },
+                      }}
+                      variant="body1"
+                      onClick={() => handleNavigation("login")}
+                      component="button"
+                    >
+                      Login
+                    </Typography>
+                  )}
+                </ListItem>
+              </List>
             </Menu>
           </Box>
         </Toolbar>
@@ -162,4 +263,4 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
+export default NavBar;

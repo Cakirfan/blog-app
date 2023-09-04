@@ -2,3 +2,6 @@
 - MUI - Tailwind
 - Formik - Formik-Yup
 - react-router
+- react tostify
+- redux-persist
+- react helmet
