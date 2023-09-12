@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import useBlogCall from "../hooks/useBlogCalls";
+import useBlogCall from "../../hooks/useBlogCalls";
 import { useSelector } from "react-redux";
 import { Form } from "formik";
 import { object, string } from "yup";
@@ -58,7 +58,7 @@ const NewBlogForm = ({ values, handleChange, errors, touched, handleBlur }) => {
             gap: 1.3,
             width: "350px",
             maxHeight: "680px",
-            padding: "1rem 0"
+            padding: "1rem 0",
           }}
         >
           <TextField

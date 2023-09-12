@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "../components/blog/BlogCard";
 import { Container, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../hooks/useBlogCalls";

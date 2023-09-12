@@ -6,7 +6,7 @@ import CardActions from "@mui/material/CardActions";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
-import logo from "../Assets/puzzle.jpg";
+// import logo from "../Assets/puzzle.jpg";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Helmet } from "react-helmet";
@@ -23,12 +23,13 @@ const About = () => {
   return (
     <Grid
       container
+      height="80%"
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        mt: 3,
-        mb: 3,
+        paddingY: "2.5rem",
+        backgroundColor: "#ffcccc",
       }}
     >
       <Helmet>
@@ -44,9 +45,9 @@ const About = () => {
         }}
       >
         <CardMedia
-          sx={{ height: 500, objectFit: "contain" }}
+          sx={{ height: 500, objectFit: "cover" }}
           component="img"
-          image={logo}
+          image="https://images.pexels.com/photos/2681319/pexels-photo-2681319.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="image"
         />
         <CardContent sx={{ height: 130, textAlign: "center" }}>

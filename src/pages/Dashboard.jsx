@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { Grid } from "@mui/material";
-import { flexCenter } from "../styles/globalStyle";
-import BlogCard from "../components/BlogCard";
+// import { flexCenter } from "../styles/globalStyle";
+import BlogCard from "../components/blog/BlogCard";
 import { Helmet } from "react-helmet";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 
@@ -38,7 +38,16 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Grid container sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, mt: "7rem" }}>
+      <Grid
+        container
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 5,
+          mt: "7rem",
+        }}
+      >
         <Helmet>
           <title>Dashboard</title>
         </Helmet>

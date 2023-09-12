@@ -24,6 +24,7 @@ const useBlogCalls = () => {
       dispatch(fetchFail());
     }
   };
+
   const getBlogDataDraft = async () => {
     dispatch(fetchStart());
     try {

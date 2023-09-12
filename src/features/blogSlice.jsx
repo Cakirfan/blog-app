@@ -21,7 +21,7 @@ const blogSlice = createSlice({
     },
     getSuccess: (state, { payload }) => {
       state.loading = false;
-      state[payload.url] = payload.data; // tek bir reducerla tüm stateleri doldurabilmiş olduk.
+      state[payload.url] = payload.data;
     },
     fetchFail: (state) => {
       state.loading = false;

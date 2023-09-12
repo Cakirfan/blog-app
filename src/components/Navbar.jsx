@@ -11,14 +11,17 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import logo from "../Assets/puzzle.jpg";
 import { List, ListItem } from "@mui/material";
-import useAuthCall from "../hooks/useAuthCall";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import avatar from "../Assets/avatar.jpg";
 
-function NavBar() {
+import MyLogo from "./MyLogo";
+import avatar from "../Assets/avatar.jpg";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useAuthCall from "../hooks/useAuthCall";
+
+// const pages = ["Dashboard", "New Blog", "About"];
+
+function Navbar() {
   const navigate = useNavigate();
   const { currentUser, image } = useSelector((state) => state.auth);
   const { logout } = useAuthCall();
@@ -46,15 +49,20 @@ function NavBar() {
     handleCloseNavMenu();
     handleCloseUserMenu();
   };
+
   const handleClick = () => {
-    logout();
-    handleCloseUserMenu();
-  };
+     logout();
+     handleCloseUserMenu();
+   };
 
   return (
     <AppBar
-      position="fixed"
-      sx={{ backgroundColor: "slategray", color: "white", opacity: ".8", paddingY: "10px" }}
+      position="static"
+      sx={{
+        backgroundColor: "#233142",
+        color: "white",
+        paddingY: "7px",
+      }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -69,7 +77,8 @@ function NavBar() {
               display: { xs: "none", md: "flex" },
             }}
           >
-            <img src={logo} alt="#" width="80px" height="80px" />
+            {/* <img src={logo} alt="#" width="80px" height="80px" /> */}
+            <MyLogo />
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -81,8 +90,9 @@ function NavBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
-              <MenuIcon sx={{ color: "black" }} />
+              <MenuIcon />
             </IconButton>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -98,12 +108,14 @@ function NavBar() {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                color: "white",
                 display: { xs: "block", md: "none" },
               }}
             >
               <MenuItem
-                sx={{ color: "black", "&:hover": { backgroundColor: "white" } }}
+                sx={{
+                  color: "#0d0d0d",
+                  "&:hover": { backgroundColor: "white" },
+                }}
                 onClick={handleCloseNavMenu}
               >
                 <Typography textAlign="center">
@@ -138,17 +150,18 @@ function NavBar() {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flex: 1,
-              borderRadius: "50%",
+              // borderRadius: "50%",
               overflow: "hidden",
             }}
           >
-            <img src={logo} alt="#" width="80px" height="80px" />
+            {/* <img src={logo} alt="#" width="80px" height="80px" /> */}
+            <MyLogo />
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
               onClick={() => handleNavigation("")}
-              sx={{ my: 2, ml: 2, color: "black", display: "block" }}
+              sx={{ my: 2, ml: 2, color: "white", display: "block" }}
             >
               Dashboard
             </Button>
@@ -156,18 +169,18 @@ function NavBar() {
               <>
                 <Button
                   onClick={() => handleNavigation("newblog")}
-                  sx={{ my: 2, ml: 2, color: "black", display: "block" }}
+                  sx={{ my: 2, ml: 2, color: "white", display: "block" }}
                 >
                   New Blog
                 </Button>
-                <Button
-                  onClick={() => handleNavigation("about")}
-                  sx={{ my: 2, ml: 2, color: "black", display: "block" }}
-                >
-                  About
-                </Button>
               </>
             )}
+            <Button
+              onClick={() => handleNavigation("about")}
+              sx={{ my: 2, ml: 2, color: "white", display: "block" }}
+            >
+              About
+            </Button>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -193,7 +206,7 @@ function NavBar() {
               onClose={handleCloseUserMenu}
             >
               <List component="ul" sx={{ margin: 0, padding: 0 }}>
-                {currentUser && (
+                {currentUser ? (
                   <>
                     <ListItem component="li" sx={{ marginBottom: -2 }}>
                       <Typography
@@ -223,24 +236,23 @@ function NavBar() {
                         My Blogs
                       </Typography>
                     </ListItem>
+                    <ListItem component="li">
+                      <Typography
+                        sx={{
+                          p: 1,
+                          borderRadius: "5px",
+                          "&:hover": { backgroundColor: "#fafafa" },
+                        }}
+                        variant="body1"
+                        onClick={handleClick}
+                        component="button"
+                      >
+                        Logout
+                      </Typography>
+                    </ListItem>
                   </>
-                )}
-
-                <ListItem component="li" sx={{ marginBottom: 0 }}>
-                  {currentUser ? (
-                    <Typography
-                      sx={{
-                        p: 1,
-                        borderRadius: "5px",
-                        "&:hover": { backgroundColor: "#fafafa" },
-                      }}
-                      variant="body1"
-                      onClick={handleClick}
-                      component="button"
-                    >
-                      Logout
-                    </Typography>
-                  ) : (
+                ) : (
+                  <ListItem component="li">
                     <Typography
                       sx={{
                         p: 1,
@@ -253,8 +265,8 @@ function NavBar() {
                     >
                       Login
                     </Typography>
-                  )}
-                </ListItem>
+                  </ListItem>
+                )}
               </List>
             </Menu>
           </Box>
@@ -263,4 +275,4 @@ function NavBar() {
     </AppBar>
   );
 }
-export default NavBar;
+export default Navbar;

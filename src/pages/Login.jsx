@@ -4,11 +4,11 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import LockIcon from "@mui/icons-material/Lock";
-import image from "../Assets/login.jpg";
+import image from "../Assets/userLogin.jpg";
 import { Link } from "react-router-dom";
 import { Formik } from "formik";
 import useAuthCall from "../hooks/useAuthCall";
-import LoginForm, { loginScheme } from "../components/LoginForm";
+import LoginForm, { loginScheme } from "../components/auth/LoginForm";
 import { Helmet } from "react-helmet";
 
 const Login = () => {

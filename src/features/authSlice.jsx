@@ -6,7 +6,7 @@ const authSlice = createSlice({
   initialState: {
     currentUser: null,
     currentUserId: null,
-    loading: false, // const [loading,setLoading] = useState(false)
+    loading: false,
     error: false,
     image: "",
     first_name: "",
@@ -14,6 +14,7 @@ const authSlice = createSlice({
     bio: "",
     token: null,
   },
+  
   reducers: {
     fetchStart: (state) => {
       state.loading = true; // setLoading(true)
@@ -25,12 +26,6 @@ const authSlice = createSlice({
       state.currentUserId = payload?.user?.id;
       state.token = payload?.key;
     },
-    profileSuccess: (state, { payload }) => {
-      state.image = payload?.user?.image;
-      state.first_name = payload?.user?.first_name;
-      state.email = payload?.user?.email;
-      state.bio = payload?.user?.bio;
-    },
     // prop drilling
     logoutSuccess: (state) => {
       state.loading = false;
@@ -39,7 +34,7 @@ const authSlice = createSlice({
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
-      state.currentUser = payload?.username;
+      state.currentUser = payload?.user?.username;
       state.token = payload?.token;
       state.error = false;
     },
@@ -54,9 +49,10 @@ export const {
   fetchStart,
   loginSuccess,
   logoutSuccess,
+  profileSuccess,
   registerSuccess,
   fetchFail,
-  profileSuccess,
+  
 } = authSlice.actions;
 export default authSlice.reducer;
 

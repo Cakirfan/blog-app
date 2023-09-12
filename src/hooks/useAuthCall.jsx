@@ -14,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 
 const useAuthCall = () => {
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
@@ -30,12 +31,12 @@ const useAuthCall = () => {
       dispatch(loginSuccess(data));
       dispatch(profileSuccess(data));
       toastSuccessNotify("Login performed");
-      navigate("/blog");
-      // console.log(data);
+      navigate("/");
+      console.log(data);
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify("Login can not be performed");
-      // console.log(error);
+      console.log(error);
     }
   };
 
@@ -63,8 +64,8 @@ const useAuthCall = () => {
       dispatch(registerSuccess(data));
       dispatch(profileSuccess(data));
       toastSuccessNotify("Register performed");
-      navigate("/blog");
-      // console.log(data);
+      navigate("/login");
+      console.log(data);
     } catch (err) {
       dispatch(fetchFail());
       toastErrorNotify("Register can not be performed");
@@ -72,6 +73,7 @@ const useAuthCall = () => {
   };
 
   return { login, register, logout };
+  
 };
 
 export default useAuthCall;
