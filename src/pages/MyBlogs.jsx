@@ -20,11 +20,11 @@ const MyBlogs = () => {
         <title>My Blogs</title>
       </Helmet>
       <Container
-        sx={{ minHeight: "90vh", marginTop: "7rem", marginBottom: "8rem" }}
+        sx={{ minHeight: "90vh", marginTop: "8rem", marginBottom: "8rem" }}
       >
         <Grid
           container
-          sx={{ display: "flex", justifyContent: "center", gap: 4, mt: 3 }}
+          sx={{ display: "flex", justifyContent: "center", gap: 3, mt: 3 }}
         >
           {blogs.map((blog) => (
             <BlogCard key={blog.id} blog={blog} />

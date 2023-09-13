@@ -51,7 +51,7 @@ export default function BlogCard({ blog }) {
   return (
     <Card
       sx={{
-        width: "400px",
+        width: "355px",
         height: "450px",
         display: "flex",
         flexDirection: "column",

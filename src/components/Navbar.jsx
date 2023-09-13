@@ -57,7 +57,7 @@ function Navbar() {
 
   return (
     <AppBar
-      position="static"
+      position="fixed"
       sx={{
         backgroundColor: "#233142",
         color: "white",
