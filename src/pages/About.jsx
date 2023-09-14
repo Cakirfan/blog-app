@@ -30,6 +30,7 @@ const About = () => {
         alignItems: "center",
         paddingY: "2.5rem",
         backgroundColor: "#ffcccc",
+        marginTop: "6.5rem"
       }}
     >
       <Helmet>
