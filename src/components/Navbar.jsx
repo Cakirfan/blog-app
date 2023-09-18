@@ -56,186 +56,203 @@ function Navbar() {
    };
 
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        backgroundColor: "#233142",
-        color: "white",
-        paddingY: "7px",
-      }}
-    >
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box
-            onClick={() => handleNavigation("")}
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              borderRadius: "50%",
-              overflow: "hidden",
-              display: { xs: "none", md: "flex" },
-            }}
-          >
-            {/* <img src={logo} alt="#" width="80px" height="80px" /> */}
-            <MyLogo />
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+    <>
+      <AppBar
+        position="fixed"
+        sx={{
+          backgroundColor: "#233142",
+          color: "white",
+          paddingY: "7px",
+        }}
+      >
+        <Container maxWidth="xl">
+          <Toolbar disableGutters>
+            <Box
+              onClick={() => handleNavigation("")}
+              component="a"
+              href="/"
               sx={{
-                display: { xs: "block", md: "none" },
+                mr: 2,
+                borderRadius: "50%",
+                overflow: "hidden",
+                display: { xs: "none", md: "flex" },
               }}
             >
-              <MenuItem
-                sx={{
-                  color: "#0d0d0d",
-                  "&:hover": { backgroundColor: "white" },
-                }}
-                onClick={handleCloseNavMenu}
+              {/* <img src={logo} alt="#" width="80px" height="80px" /> */}
+              <MyLogo />
+            </Box>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
               >
-                <Typography textAlign="center">
-                  <Button
-                    onClick={() => handleNavigation("")}
-                    sx={{ color: "black", display: "block" }}
-                  >
-                    Dashboard
-                  </Button>
+                <MenuIcon />
+              </IconButton>
+
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "left",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block", md: "none" },
+                }}
+              >
+                <MenuItem
+                  sx={{
+                    color: "#0d0d0d",
+                    "&:hover": { backgroundColor: "white" },
+                  }}
+                  onClick={handleCloseNavMenu}
+                >
+                  <Typography textAlign="center">
+                    <Button
+                      onClick={() => handleNavigation("")}
+                      sx={{ color: "black", display: "block" }}
+                    >
+                      Dashboard
+                    </Button>
+                    <Button
+                      onClick={() => handleNavigation("newblog")}
+                      sx={{ color: "black", display: "block" }}
+                    >
+                      New Blog
+                    </Button>
+                    <Button
+                      onClick={() => handleNavigation("about")}
+                      sx={{ color: "black", display: "block" }}
+                    >
+                      About
+                    </Button>
+                  </Typography>
+                </MenuItem>
+              </Menu>
+            </Box>
+
+            <Box
+              onClick={() => handleNavigation("")}
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "flex", md: "none" },
+                flex: 1,
+                // borderRadius: "50%",
+                overflow: "hidden",
+              }}
+            >
+              {/* <img src={logo} alt="#" width="80px" height="80px" /> */}
+              <MyLogo />
+            </Box>
+
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <Button
+                onClick={() => handleNavigation("")}
+                sx={{ my: 2, ml: 2, color: "white", display: "block" }}
+              >
+                Dashboard
+              </Button>
+              {currentUser && (
+                <>
                   <Button
                     onClick={() => handleNavigation("newblog")}
-                    sx={{ color: "black", display: "block" }}
+                    sx={{ my: 2, ml: 2, color: "white", display: "block" }}
                   >
                     New Blog
                   </Button>
-                  <Button
-                    onClick={() => handleNavigation("about")}
-                    sx={{ color: "black", display: "block" }}
-                  >
-                    About
-                  </Button>
-                </Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
+                </>
+              )}
+              <Button
+                onClick={() => handleNavigation("about")}
+                sx={{ my: 2, ml: 2, color: "white", display: "block" }}
+              >
+                About
+              </Button>
+            </Box>
 
-          <Box
-            onClick={() => handleNavigation("")}
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flex: 1,
-              // borderRadius: "50%",
-              overflow: "hidden",
-            }}
-          >
-            {/* <img src={logo} alt="#" width="80px" height="80px" /> */}
-            <MyLogo />
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              onClick={() => handleNavigation("")}
-              sx={{ my: 2, ml: 2, color: "white", display: "block" }}
-            >
-              Dashboard
-            </Button>
-            {currentUser && (
-              <>
-                <Button
-                  onClick={() => handleNavigation("newblog")}
-                  sx={{ my: 2, ml: 2, color: "white", display: "block" }}
-                >
-                  New Blog
-                </Button>
-              </>
-            )}
-            <Button
-              onClick={() => handleNavigation("about")}
-              sx={{ my: 2, ml: 2, color: "white", display: "block" }}
-            >
-              About
-            </Button>
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={currentUser ? image : avatar} />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              <List component="ul" sx={{ margin: 0, padding: 0 }}>
-                {currentUser ? (
-                  <>
-                    <ListItem component="li" sx={{ marginBottom: -2 }}>
-                      <Typography
-                        sx={{
-                          p: 1,
-                          borderRadius: "5px",
-                          "&:hover": { backgroundColor: "#fafafa" },
-                        }}
-                        variant="body1"
-                        component="button"
-                        onClick={() => handleNavigation("profile")}
-                      >
-                        Profile
-                      </Typography>
-                    </ListItem>
-                    <ListItem component="li" sx={{ marginBottom: -2 }}>
-                      <Typography
-                        sx={{
-                          p: 1,
-                          borderRadius: "5px",
-                          "&:hover": { backgroundColor: "#fafafa" },
-                        }}
-                        variant="body1"
-                        component="button"
-                        onClick={() => handleNavigation("my-blogs")}
-                      >
-                        My Blogs
-                      </Typography>
-                    </ListItem>
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src={currentUser ? image : avatar} />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                <List component="ul" sx={{ margin: 0, padding: 0 }}>
+                  {currentUser ? (
+                    <>
+                      <ListItem component="li" sx={{ marginBottom: -2 }}>
+                        <Typography
+                          sx={{
+                            p: 1,
+                            borderRadius: "5px",
+                            "&:hover": { backgroundColor: "#fafafa" },
+                          }}
+                          variant="body1"
+                          component="button"
+                          onClick={() => handleNavigation("profile")}
+                        >
+                          Profile
+                        </Typography>
+                      </ListItem>
+                      <ListItem component="li" sx={{ marginBottom: -2 }}>
+                        <Typography
+                          sx={{
+                            p: 1,
+                            borderRadius: "5px",
+                            "&:hover": { backgroundColor: "#fafafa" },
+                          }}
+                          variant="body1"
+                          component="button"
+                          onClick={() => handleNavigation("my-blogs")}
+                        >
+                          My Blogs
+                        </Typography>
+                      </ListItem>
+                      <ListItem component="li">
+                        <Typography
+                          sx={{
+                            p: 1,
+                            borderRadius: "5px",
+                            "&:hover": { backgroundColor: "#fafafa" },
+                          }}
+                          variant="body1"
+                          onClick={handleClick}
+                          component="button"
+                        >
+                          Logout
+                        </Typography>
+                      </ListItem>
+                    </>
+                  ) : (
                     <ListItem component="li">
                       <Typography
                         sx={{
@@ -244,35 +261,20 @@ function Navbar() {
                           "&:hover": { backgroundColor: "#fafafa" },
                         }}
                         variant="body1"
-                        onClick={handleClick}
+                        onClick={() => handleNavigation("login")}
                         component="button"
                       >
-                        Logout
+                        Login
                       </Typography>
                     </ListItem>
-                  </>
-                ) : (
-                  <ListItem component="li">
-                    <Typography
-                      sx={{
-                        p: 1,
-                        borderRadius: "5px",
-                        "&:hover": { backgroundColor: "#fafafa" },
-                      }}
-                      variant="body1"
-                      onClick={() => handleNavigation("login")}
-                      component="button"
-                    >
-                      Login
-                    </Typography>
-                  </ListItem>
-                )}
-              </List>
-            </Menu>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+                  )}
+                </List>
+              </Menu>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </>
   );
 }
 export default Navbar;

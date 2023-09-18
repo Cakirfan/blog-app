@@ -14,7 +14,7 @@ const authSlice = createSlice({
     bio: "",
     token: null,
   },
-  
+
   reducers: {
     fetchStart: (state) => {
       state.loading = true; // setLoading(true)
@@ -25,6 +25,12 @@ const authSlice = createSlice({
       state.currentUser = payload?.user?.username;
       state.currentUserId = payload?.user?.id;
       state.token = payload?.key;
+    },
+    profileSuccess: (state, { payload }) => {
+      state.image = payload?.user?.image;
+      state.first_name = payload?.user?.first_name;
+      state.email = payload?.user?.email;
+      state.bio = payload?.user?.bio;
     },
     // prop drilling
     logoutSuccess: (state) => {

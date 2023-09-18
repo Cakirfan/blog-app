@@ -15,7 +15,7 @@ const Login = () => {
   const { login } = useAuthCall();
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ marginTop: "6.5rem" }}>
       <Helmet>
         <title>Login</title>
       </Helmet>

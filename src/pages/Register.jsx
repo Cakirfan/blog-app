@@ -15,7 +15,7 @@ const Register = () => {
   const { register } = useAuthCall();
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" sx={{ marginTop:"6.5rem" }}>
       <Helmet>
         <title>Register</title>
       </Helmet>

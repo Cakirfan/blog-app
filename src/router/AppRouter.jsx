@@ -29,16 +29,16 @@ const Router = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/notfound" element={<NotFound />} />
 
-        <Route path="/detail/:id" element={<PrivateRouter />}>
-          <Route path="" element={<Detail />} />
+        <Route path="" element={<PrivateRouter />}>
+          <Route path="/detail/:id" element={<Detail />} />
         </Route>
 
-        <Route path="/newblog" element={<PrivateRouter />}>
-          <Route path="" element={<NewBlog />} />
+        <Route path="" element={<PrivateRouter />}>
+          <Route path="/newblog" element={<NewBlog />} />
         </Route>
 
-        <Route path="/my-blogs" element={<PrivateRouter />}>
-          <Route path="" element={<MyBlogs />} />
+        <Route path="" element={<PrivateRouter />}>
+          <Route path="/my-blogs" element={<MyBlogs />} />
         </Route>
 
         <Route path="/about" element={<About />} />

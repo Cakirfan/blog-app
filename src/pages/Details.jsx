@@ -65,7 +65,12 @@ const Detail = () => {
   return (
     <Grid
       container
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: "6.5rem",
+      }}
     >
       <Helmet>
         <title>Details</title>
