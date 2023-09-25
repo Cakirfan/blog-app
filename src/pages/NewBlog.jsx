@@ -62,7 +62,7 @@ const NewBlog = () => {
             variant="h4"
             align="center"
             color="orangered"
-            sx={{ mb: 3, fontWeight: 600 }}
+            sx={{ fontWeight: 600 }}
           >
             New Blog
           </Typography>

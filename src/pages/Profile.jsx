@@ -20,7 +20,7 @@ const Profile = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        mt: 3,
+        mt: 11,
         height: "74.5vh",
       }}
     >
@@ -29,14 +29,16 @@ const Profile = () => {
       </Helmet>
       <Card
         sx={{
-          width: "700px",
+          width: "500px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
+          padding: ".5rem",
+          boxShadow: "3px 9px 9px #000"
         }}
       >
         <CardMedia
-          sx={{ objectFit: "contain", height: "300px" }}
+          sx={{ objectFit: "contacoverin", height: "300px" }}
           component="img"
           image={image ? image : avatar}
           alt="image"

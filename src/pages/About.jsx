@@ -51,7 +51,7 @@ const About = () => {
           image="https://images.pexels.com/photos/2681319/pexels-photo-2681319.jpeg?auto=compress&cs=tinysrgb&w=600"
           alt="image"
         />
-        <CardContent sx={{ height: 130, textAlign: "center" }}>
+        <CardContent sx={{ height: 30, textAlign: "center" }}>
           <Typography variant="h4" color="text.primary">
             Front End Developer
           </Typography>

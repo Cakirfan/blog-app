@@ -13,11 +13,11 @@ import Detail from "../pages/Details"
 import Footer from "../components/Footer";
 import MyBlogs from "../pages/MyBlogs";
 import NotFound from "../pages/NotFound";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 const Router = () => {
 
-  const { currentUser } = useSelector((state) => state.auth);
+  // const { currentUser } = useSelector((state) => state.auth);
 
   return (
     <BrowserRouter>
@@ -43,7 +43,7 @@ const Router = () => {
 
         <Route path="/about" element={<About />} />
       </Routes>
-      {currentUser && <Footer />}
+      <Footer />
     </BrowserRouter>
   );
 };

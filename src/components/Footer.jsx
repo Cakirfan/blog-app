@@ -26,10 +26,10 @@ const Footer = () => {
       <FooterContainer>
         <Container>
           <Typography variant="body1" align="center" color="#eee">
-            Developed by Irfan Cakir
+            Developed by <a href="https://github.com/Cakirfan" target="_blank" style={{ color: "#000", fontWeight: "700"}}>Cakirfan</a>
           </Typography>
           <Typography variant="body1" align="center" color="#eee">
-            Copyright © KnospeCoding {new Date().getFullYear()}
+            Copyright © MyCoding {new Date().getFullYear()}
           </Typography>
         </Container>
       </FooterContainer>
