@@ -6,6 +6,7 @@ import PostAddIcon from "@mui/icons-material/PostAdd";
 import NewBlogForm, { blogSchema } from "../components/blog/NewBlogForm";
 import useBlogCalls from "../hooks/useBlogCalls";
 import { Helmet } from "react-helmet";
+import blogBg from "../Assets/blog-2288426_640.jpg"
 
 const NewBlog = () => {
   const { postBlogData } = useBlogCalls();
@@ -14,8 +15,7 @@ const NewBlog = () => {
     <>
       <Grid
         sx={{
-          backgroundImage:
-            "url(https://cdn.pixabay.com/photo/2017/05/05/22/38/blog-2288426_640.jpg)",
+          backgroundImage: `url(${blogBg})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundPosition: "center",
